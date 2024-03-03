@@ -1,27 +1,17 @@
 //Apporter tous les modeles
-import Etudiant from "./Etudiant.js";
-import Department from "./Department.js";
+import Role from "./RoleModel.js";
+import Utilisateur from "./UtilisateurModel.js";
 
 //Definition des relations
+
+
 //Un role a plusieurs utilisateur
-Department.hasMany(Etudiant)
+Role.hasMany(Utilisateur)
 
-
-
-//Un emplacement a plusieurs departements
-
-
-
-//Un emplacement a plusieurs equipements
-
-
-
-//Un emplacement a plusieurs departemnts
-
-//Un etudiant a un et un seul departement
-Etudiant.belongsTo(Department)
+//Un utilisateur a un et un seul role
+Utilisateur.belongsTo(Role)
 
 // await Department.sync()
 // await Etudiant.sync()
 
-export {Etudiant, Department}
+export {Utilisateur, Role}
