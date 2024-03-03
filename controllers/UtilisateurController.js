@@ -7,25 +7,25 @@ import { Utilisateur } from "../models/UtilisateurModel.js"
 export const utilisateurList = async (req, res) => {
 
     //Liste des utilisateurs depuis la base de donnees
-    const utilisateurs = await Department.findAll()
+    const utilisateurs = await Utilisateur.findAll()
 
     res.status(200).json({ data: utilisateurs })
 
 }
 
 
-    // Creation d'un departement
+    // Creation d'un utilisateur
    export const addUtilisateur= async (req,res)=>{
-        // Les informations du nouveau departement envoyé depuis postman
+        // Les informations du nouvel utilisateur envoyé depuis postman
         const utilisateur = req.body
 
-        //const {nom, description, creation_date} = req.body
+        //const {idutilisateur, nom, prénom, adresse, email, mot de passe, idRôle, idDepartement} = req.body
 
-        console.log('new department',utilisateur) // verification de l'envoie du departement
+        console.log('new utilisateur',utilisateur) // verification de l'envoi de l'utilisateur
 
-        // Un try catch afin quele programme ne plante pas en cas d'erreur
+        // Un try catch afin que le programme ne plante pas en cas d'erreur
         try {
-            await Utilisateur.create(utilisateur)// le await est dans l'optique de l'attente qui pourrait survenir lors de la creation de departement
+            await Utilisateur.create(utilisateur)// le await est dans l'optique de l'attente qui pourrait survenir lors de la creation de l'utilisateur
             res.status(201).json({message:"L'utilisateur a ete cree avec success"})
         } catch (error) {
             res.status(404).json({message:error.message})
