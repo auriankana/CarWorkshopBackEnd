@@ -7,7 +7,7 @@ import database from "../config/connexion.js";
 //Creation du modele (l'entite en base de donnees)
 
 const Role = database.define('role', {
-    idUtilisateur:{
+    idRole:{
         type: DataTypes.INTEGER,
          primaryKey: true,
          allowNull:false,
