@@ -36,7 +36,7 @@ const PORT = 5000
 
 //Importation du controllers
 import { etudiantList } from './controllers/etudiants.js'
-import { addDepartment, deleteDepartment, departmentList, updateDepartment } from './controllers/departments.js'
+import { addDepartment, deleteDepartment, departmentList, updateDepartment } from './controllers/UtilisateurController.js'
 
 //Creation reelle des tables
 import database from './config/connexion.js'

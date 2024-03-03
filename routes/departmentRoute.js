@@ -1,7 +1,7 @@
  // Impoter la fonction route
 
  import { Router } from "express"
-import { addDepartment, deleteDepartment, departmentList, updateDepartment } from "../controllers/departments.js"
+import { addDepartment, deleteDepartment, departmentList, updateDepartment } from "../controllers/UtilisateurController.js"
 
 
  export const router = Router()
