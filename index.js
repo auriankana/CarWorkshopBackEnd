@@ -25,6 +25,15 @@ app.use(compression())
 const PORT = 5000
 
 
+
+
+
+// Modification of all parameters
+
+
+
+
+
 //Importation du controllers
 import { etudiantList } from './controllers/etudiants.js'
 import { addDepartment, deleteDepartment, departmentList, updateDepartment } from './controllers/departments.js'

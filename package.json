@@ -1,7 +1,7 @@
 {
-  "name": "express-et-mysql",
+  "name": "garage-automobile",
   "version": "1.0.0",
-  "description": "Connexion d'express et mysql",
+  "description": "pour reparer vos voitures de maniere efficace",
   "type": "module",
   "main": "index.js",
   "scripts": {
