@@ -1,5 +1,5 @@
 // Amener le modele du departement avec les relations
-import {Utilisateur} from '../models/relation.js'
+import { Utilisateur } from "../models/relation.js"
 import bcrypt from 'bcrypt'
 //Controllers
 
