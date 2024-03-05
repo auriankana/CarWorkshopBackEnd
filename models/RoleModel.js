@@ -14,7 +14,8 @@ const Role = database.define('role', {
         autoIncrement: true
     },
     titre: { 
-        type: DataTypes.ENUM ('manager', 'admin', 'mechanic', 'supplier', 'customer'),
+        type: DataTypes.ENUM ('manager', 'admin', 'mechanic', 'supplier', 'customer') ,
+        defaultValue: 'customer',
         allowNull: false
     }
 })
