@@ -7,7 +7,7 @@ import { Role } from "../models/relation.js";
 export const roleList=async(req, res)=>{
     //Liste des etudiants depuis la base de donnees
 
-    const etudiants=await Etudiant.findAll()
+    const etudiants=await Role.findAll()
 
     res.status(200).json({ data: etudiants , message:'Tout semble bien marche'})
 }
