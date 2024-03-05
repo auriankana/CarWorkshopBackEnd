@@ -1,6 +1,6 @@
 // Amener le modele du departement avec les relations
 import { Utilisateur } from "../models/UtilisateurModel.js"
-
+import bcrypt from 'bcrypt'
 //Controllers
 
 
@@ -17,9 +17,14 @@ export const utilisateurList = async (req, res) => {
     // Creation d'un utilisateur
    export const addUtilisateur= async (req,res)=>{
         // Les informations du nouvel utilisateur envoyé depuis postman
-        const utilisateur = req.body
 
-        //const {idutilisateur, nom, prénom, adresse, email, mot de passe, idRôle, idDepartement} = req.body
+
+        // Hachage du mot de passe
+        const {idutilisateur, nom, prénom, adresse, email, motDePasse, idRôle, idDepartement} = req.body
+
+         const mdpHash = bcrypt.hashSync(motDePasse,10)
+         
+         const utilisateur ={idutilisateur, nom, prénom, adresse, email, motDePasse: mdpHash, idRôle, idDepartement}
 
         console.log('new utilisateur',utilisateur) // verification de l'envoi de l'utilisateur
 
