@@ -31,16 +31,10 @@ const PORT = 5000
 // Modification of all parameters
 
 
-
-
-
-//Importation du controllers
-import { etudiantList } from './controllers/RoleController.js'
-import { addDepartment, deleteDepartment, departmentList, updateDepartment } from './controllers/UtilisateurController.js'
-
 //Creation reelle des tables
 import database from './config/connexion.js'
-import { router } from './routes/departmentRoute.js'
+import { router } from './routes/utilisateurRoute.js'
+import { routerRole } from './routes/roleUtilisateur.js'
 
 database.sync()
 
@@ -49,17 +43,9 @@ const notreFunction = (req, res) => {
 }
 app.get('/salutations', notreFunction)
 
-app.get('/etudiants',etudiantList)
-
-
-// app.get('/departments',departmentList)
-// app.post('/departments', addDepartment)
-// app.put('/departments/:id', updateDepartment)
-// app.put('/departments/:id', deleteDepartment)
-
 
 // Pour remplacer  les quatres fonctions du haut
-app.use ("/departments", router)
-app.get('/etudiants',etudiantList)
+app.use ("/utilisateurs", router)
+app.use('/roles',routerRole)
 //Creation du serveur et demarrage du serveur
 app.listen(PORT, () => console.log('Le serveur tourne sur ' + PORT))
