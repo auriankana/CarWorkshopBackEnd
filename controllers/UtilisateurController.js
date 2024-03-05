@@ -1,5 +1,5 @@
 // Amener le modele du departement avec les relations
-import { Utilisateur } from "../models/UtilisateurModel.js"
+import {Utilisateur} from '../models/relation.js'
 import bcrypt from 'bcrypt'
 //Controllers
 
@@ -20,11 +20,11 @@ export const utilisateurList = async (req, res) => {
 
 
         // Hachage du mot de passe
-        const {idutilisateur, nom, prénom, adresse, email, motDePasse, idRôle, idDepartement} = req.body
+        const {idutilisateur, nom, prenom, adresse, email, motDePasse, idRole, idDepartement} = req.body
 
          const mdpHash = bcrypt.hashSync(motDePasse,10)
          
-         const utilisateur ={idutilisateur, nom, prénom, adresse, email, motDePasse: mdpHash, idRôle, idDepartement}
+         const utilisateur ={idutilisateur, nom, prenom, adresse, email, motDePasse: mdpHash, idRole, idDepartement}
 
         console.log('new utilisateur',utilisateur) // verification de l'envoi de l'utilisateur
 
@@ -45,7 +45,7 @@ export const utilisateurList = async (req, res) => {
 
         //Validation de l'id
         if(! parseInt(id)) return res.status(404).json({message:"Cet utilisateur n'existe pas"})     
-        const utilisateur = await Department.findByPk(id)
+        const utilisateur = await Utilisateur.findByPk(id)
         // Nouvelle information 
         const newUtilisateur = req.body
         
