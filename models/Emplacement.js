@@ -10,4 +10,4 @@ const Emplacement = database.define('emplacement', {
 
 export default Emplacement;
 
-//Juste un commentaire 
+
