@@ -27,7 +27,6 @@ const PORT = 5000
 
 
 
-
 // Modification of all parameters
 
 
@@ -35,7 +34,13 @@ const PORT = 5000
 import database from './config/connexion.js'
 import { router } from './routes/utilisateurRoute.js'
 import { routerRole } from './routes/roleUtilisateur.js'
+import {departmentRouter}from './routes/departmentRoute.js';
+import {emplacementRouter} from './routes/emplacementRoute.js';
 
+//Creation reelle des tables
+//import database from './config/connexion.js';
+
+//synchronisation avec la  base de donnes
 database.sync()
 
 const notreFunction = (req, res) => {
@@ -47,5 +52,7 @@ app.get('/salutations', notreFunction)
 // Pour remplacer  les quatres fonctions du haut
 app.use ("/utilisateurs", router)
 app.use('/roles',routerRole)
+app.use("/departments", departmentRouter);
+app.use("/emplacements", emplacementRouter);
 //Creation du serveur et demarrage du serveur
 app.listen(PORT, () => console.log('Le serveur tourne sur ' + PORT))
