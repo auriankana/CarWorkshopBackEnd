@@ -7,9 +7,9 @@ import { Role } from "../models/relation.js";
 export const roleList=async(req, res)=>{
     //Liste des etudiants depuis la base de donnees
 
-    const etudiants=await Role.findAll()
+    const roles=await Role.findAll()
 
-    res.status(200).json({ data: etudiants , message:'Tout semble bien marche'})
+    res.status(200).json({ data: roles , message:'Tout semble bien marche'})
 }
 
 
@@ -33,7 +33,8 @@ export const addRole = async(req,res)=>{
 export const deleteRole = async (req,res) =>{
 
     // Search of the role to delete
-    const idRole = req.params
+    const {idRole} = req.params
+    
     if (!parseInt(idRole)) return res.status(404).json({message: "Ce role n'existe pas"})
 
     try {

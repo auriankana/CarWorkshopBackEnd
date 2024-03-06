@@ -68,7 +68,7 @@ export const utilisateurList = async (req, res) => {
 
         // try catch
         try {
-            await Department.destroy({where: {id} })
+            await Utilisateur.destroy({where: {id} })
             res.status(200).json({message: `Utilisateur ${id} supprime avec success`})
         } catch (error) {
             res.status(404).json({message:error.message})

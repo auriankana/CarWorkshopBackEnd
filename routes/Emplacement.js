@@ -1,12 +1,11 @@
 import { Router, application } from "express";
-import { addEmplacement, emplacementList, removeEmplacement, updateEmplacement } from "../controllers/emplacementController.js";
+import { addEmplacement, emplacementList, removeEmplacement, updateEmplacement } from "../controllers/Emplacement.js";
 
-const router = Router();
+export const emplacementRouter = Router();
 
-router
-    app.get("/", emplacementList)
-    app.post("/", addEmplacement)
-    app.put("/:id", updateEmplacement)
-    app.delete("/:id", removeEmplacement);
+emplacementRouter
+.get("/", emplacementList)
+.post("/", addEmplacement)
+.put("/:id", updateEmplacement)
+.delete("/:id", removeEmplacement);
 
-export default router;

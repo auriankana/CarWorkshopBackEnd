@@ -2,15 +2,15 @@
 import { Router } from "express";
 
 //Importer les controllers pour la creation des routes
-import { addDepartment, departmentList, removeDepartment, updateDepartment } from "../controllers/departments.js";
+import { addDepartment, departmentList, removeDepartment, updateDepartment } from "../controllers/Departement.js";
 
-const router = Router()
+export const departmentRouter = Router()
 
-router
-    app.get("/", departmentList)
-    app.post("/", addDepartment)
-    app.put("/:id", updateDepartment)
-    app.delete("/:id",removeDepartment)
+departmentRouter
+.get("/", departmentList)
+.post("/", addDepartment)
+.put("/:id", updateDepartment)
+.delete("/:id",removeDepartment)
 
 
-    export default router
+    

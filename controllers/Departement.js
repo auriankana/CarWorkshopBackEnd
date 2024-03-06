@@ -7,7 +7,7 @@ export const departmentList = async (req, res) => {
     //Liste des departements depuis la base de donnees
     const departments = await Department.findAll()
 
-    res.status(200).json({ data: departments })
+    res.status(200).json({ data: departments, message:'Tout semble bien marche' })
 
 }
 

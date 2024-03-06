@@ -34,8 +34,8 @@ const PORT = 5000
 import database from './config/connexion.js'
 import { router } from './routes/utilisateurRoute.js'
 import { routerRole } from './routes/roleUtilisateur.js'
-import {departmentRouter}from './routes/departmentRoute.js';
-import {emplacementRouter} from './routes/emplacementRoute.js';
+import {departmentRouter}from './routes/Departement.js';
+import {emplacementRouter} from './routes/Emplacement.js';
 
 //Creation reelle des tables
 //import database from './config/connexion.js';

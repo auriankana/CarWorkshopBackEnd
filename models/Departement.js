@@ -9,7 +9,7 @@ const Departement = database.define('departement', {
     idDepartment: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     nom: { type: DataTypes.STRING, allowNull: false },
     effectif: { type: DataTypes.INTEGER, allowNull: false },
-    idEmplacement: { type: DataTypes.INTEGER, allowNull: false, references: { model: 'emplacement', key: 'idEmplacement' } }
+    idEmplacement: { type: DataTypes.INTEGER}
 });
 
 export default Departement;

@@ -25,4 +25,4 @@ Department.belongsTo(Emplacement)
 // await Department.sync()
 // await Etudiant.sync()
 
-export {Utilisateur, Role}
+export {Utilisateur, Role, Department, Emplacement}
