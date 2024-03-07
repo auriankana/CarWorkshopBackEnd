@@ -1,28 +1,16 @@
 //Apporter tous les modeles
-import Role from "./RoleModel.js";
-import Utilisateur from "./UtilisateurModel.js";
-import Department from "./departement.js";
-import Emplacement from "./emplacement.js";
+
+import Equipements from "./Equipements.js";
+import Reservations from "./Reservations.js";
 
 //Definition des relations
+//Un departement a plusieurs etudiants
+Reservations.hasMany(Equipements)
 
-
-//Un role a plusieurs utilisateur
-Role.hasMany(Utilisateur)
-
-//Un utilisateur a un et un seul role
-Utilisateur.belongsTo(Role)
-
-
-
-
-//Un role a plusieurs utilisateur
-Emplacement.hasMany(Department)
-
-//Un utilisateur a un et un seul role
-Department.belongsTo(Emplacement)
+//Un etudiant a un et un seul departement
+Equipements.belongsTo(Reservations)
 
 // await Department.sync()
 // await Etudiant.sync()
 
-export {Utilisateur, Role, Department, Emplacement}
+export {Reservations,Equipements}
