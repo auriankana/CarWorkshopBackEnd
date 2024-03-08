@@ -9,13 +9,22 @@ import database from "../config/connexion.js";
 const  Equipements = database.define('Equipements', {
 
     idEquipements: {
-    type: DataTypes.INTEGER,
-    autoIncrement: true,
-    primaryKey: true},
-    nom: { type: DataTypes.STRING, allowNull: false },
-    description: DataTypes.STRING,allowNull: false 
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+        allowNull: false
+    },
+    nom: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
+    idEmplacement: { type: DataTypes.INTEGER, references: { model: 'Emplacement', key: 'idEmplacement' }}
 },
-{ timestamps: false})
+ { timestamps: false });
 
 
 export default Equipements

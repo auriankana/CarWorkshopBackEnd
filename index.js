@@ -34,8 +34,10 @@ const PORT = 5000
 import database from './config/connexion.js'
 import { router } from './routes/utilisateurRoute.js'
 import { routerRole } from './routes/roleUtilisateur.js'
-import {departmentRouter}from './routes/Departement.js';
-import {emplacementRouter} from './routes/Emplacement.js';
+import {departmentRouter}from './routes/Departement.js'
+import {emplacementRouter} from './routes/Emplacement.js'
+import {routerEquipement}from './routes/EquipementRoute.js'
+import {routerReservation} from './routes/ReservationRoute.js'
 
 //Creation reelle des tables
 //import database from './config/connexion.js';
@@ -52,7 +54,10 @@ app.get('/salutations', notreFunction)
 // Pour remplacer  les quatres fonctions du haut
 app.use ("/utilisateurs", router)
 app.use('/roles',routerRole)
-app.use("/departments", departmentRouter);
+app.use("/departements", departmentRouter);
 app.use("/emplacements", emplacementRouter);
+app.use("/equipements", routerEquipement);
+app.use("/reservations", routerReservation);
+
 //Creation du serveur et demarrage du serveur
 app.listen(PORT, () => console.log('Le serveur tourne sur ' + PORT))

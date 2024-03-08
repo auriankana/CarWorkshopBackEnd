@@ -1,7 +1,5 @@
 // Amener le modele  avec les relations
 import { Reservations } from "../models/relation.js"
-//import { Reservations } from "../models/Reservations.js"
-
 
 
 //Controller
