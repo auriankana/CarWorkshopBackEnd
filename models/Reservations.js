@@ -10,19 +10,17 @@ const Reservations = database.define('Reservations', {
     idReservations: {
     type: DataTypes.INTEGER,
     autoIncrement: true,
-    primaryKey: true },
+    primaryKey: true
+   },
     modele: { type: DataTypes.STRING, allowNull: false },
    marque: { type: DataTypes.STRING, allowNull: false },
     electrique: { type: DataTypes.BOOLEAN, allowNull: false },
     probleme: { type: DataTypes.STRING, allowNull: false },
-    date: DataTypes.DATE,
-    heure: DataTypes.STRING,
-    idUtilisateur: {
-        type: DataTypes.INTEGER,
-       
-      }
+    date: { type: DataTypes.DATE, allowNull: false },
+    heure: { type: DataTypes.STRING, allowNull: false },
+    idUtilisateur: { type: DataTypes.INTEGER, references: { model: 'utilisateurs', key: 'idUtilisateur'}}
 },
-{ timestamps: false})
+ { timestamps: false})
 
 export default Reservations
 
