@@ -1,5 +1,5 @@
 // Amener le modele du departement avec les relations
-import { Department } from "../models/relation.js"
+import { Departement } from "../models/relation.js"
 
 //Controller
 export const departmentList = async (req, res) => {
@@ -18,7 +18,7 @@ export const addDepartment = async (req, res) => {
     // const { nom, description, creation_date } = req.body
     // console.log('new depart', department)
     try {
-        await Department.create(department)
+        await Departement.create(department)
         res.status(201).json({ message: "Le departement cree avec succes" })
     } catch (error) {
         res.status(201).json({ message: error.message })
@@ -33,7 +33,7 @@ export const updateDepartment = async (req, res) => {
     //console.log('notre id', id)
     //Validation de l'id
     if (!parseInt(id)) return res.status(404).json({ message: "Ce departement n'existe pas" })
-    const departement = await Department.findByPk(id)
+    const departement = await Departement.findByPk(id)
     //Nouvelle information
     const newDepartement = req.body
     try {
@@ -54,7 +54,7 @@ export const updateDepartment = async (req, res) => {
 export const removeDepartment = async (req, res) => {
     const { id } = req.params
     try {
-        await Department.destroy({ where: { id } })
+        await Departement.destroy({ where: { id } })
         res.status(200).json({ message: `Departement ${id} supprime avec succes` })
     } catch (error) {
         res.status(400).json({ message: error.message })
