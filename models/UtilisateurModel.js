@@ -18,8 +18,6 @@ const Utilisateur = database.define('utilisateur', {
     adresse: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false },
     motDePasse: { type: DataTypes.STRING, allowNull: false },
-    idRole: {type: DataTypes.INTEGER, references: { model: 'roles', key: 'idRole' }},
-    idDepartement: {type: DataTypes.INTEGER, references: { model: 'departements', key: 'idDepartement' }}
 })
 
 

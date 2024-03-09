@@ -9,12 +9,19 @@ import Reservations from "./Reservations.js";
 //Definition des relations
 
 
+
+
 //Un role a plusieurs utilisateurs
 Role.hasMany(Utilisateur)
 
 
 //Un utilisateur a un et un seul role
 Utilisateur.belongsTo(Role)
+
+
+
+
+
 
 
 // Un departement a plusieurs utilisateurs
@@ -25,6 +32,9 @@ Departement.hasMany(Utilisateur)
 Utilisateur.belongsTo(Departement)
 
 
+
+
+
 //Un emplacement a plusieurs departements
 Emplacement.hasMany(Departement)
 
@@ -33,11 +43,21 @@ Emplacement.hasMany(Departement)
 Departement.belongsTo(Emplacement)
 
 
+
+
+
 //Un utilisateur a plusieurs reservations
 Utilisateur.hasMany(Reservations)
 
 //Une a un et un seul utilisateur
 Reservations.belongsTo(Utilisateur)
+
+
+
+
+
+
+
 
 
 //Un emplacement a plusieurs equipemnts
