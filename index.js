@@ -38,6 +38,7 @@ import {departmentRouter}from './routes/Departement.js'
 import {emplacementRouter} from './routes/Emplacement.js'
 import {routerEquipement}from './routes/EquipementRoute.js'
 import {routerReservation} from './routes/ReservationRoute.js'
+import authentificationRoute from './routes/authentificationRoute.js'
 
 //Creation reelle des tables
 //import database from './config/connexion.js';
@@ -54,11 +55,18 @@ app.get('/salutations', notreFunction)
 
 // Pour remplacer  les quatres fonctions du haut
 app.use ("/utilisateurs", router)
+
 app.use('/roles',routerRole)
+
 app.use("/departements", departmentRouter);
+
 app.use("/emplacements", emplacementRouter);
+
 app.use("/equipements", routerEquipement);
+
 app.use("/reservations", routerReservation);
+
+app.use('/login', authentificationRoute)
 
 //Creation du serveur et demarrage du serveur
 app.listen(PORT, () => console.log('Le serveur tourne sur ' + PORT))
