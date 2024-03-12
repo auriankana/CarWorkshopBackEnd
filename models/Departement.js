@@ -6,10 +6,10 @@ import database from "../config/connexion.js";
 
 // Création du modèle (l'entité en base de données)
 const Departement = database.define('departement', {
-    idDepartment: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
+    idDepartement: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true, allowNull: false },
     nom: { type: DataTypes.STRING, allowNull: false },
     effectif: { type: DataTypes.INTEGER, allowNull: false },
-    idEmplacement: { type: DataTypes.INTEGER, references: { model: 'emplacements', key: 'idEmplacement' }}
+    // idEmplacement: { type: DataTypes.INTEGER, references: { model: 'emplacements', key: 'idEmplacement' }}
 });
 
 export default Departement;

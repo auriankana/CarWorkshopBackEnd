@@ -18,7 +18,7 @@ const Reservations = database.define('Reservations', {
     probleme: { type: DataTypes.STRING, allowNull: false },
     date: { type: DataTypes.DATE, allowNull: false },
     heure: { type: DataTypes.STRING, allowNull: false },
-    idUtilisateur: { type: DataTypes.INTEGER, references: { model: 'utilisateurs', key: 'idUtilisateur'}}
+    // idUtilisateur: { type: DataTypes.INTEGER, references: { model: 'utilisateurs', key: 'idUtilisateur'}}
 },
  { timestamps: false})
 

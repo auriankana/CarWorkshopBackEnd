@@ -16,11 +16,11 @@ const Utilisateur = database.define('utilisateur', {
     nom: { type: DataTypes.STRING, allowNull: false },
     prenom: { type: DataTypes.STRING, allowNull: false },
     adresse: { type: DataTypes.STRING, allowNull: false },
-    email: { type: DataTypes.STRING, allowNull: false },
+    email: { type: DataTypes.STRING, allowNull: false, unique:{msg:"email doit être unique"} },
     motDePasse: { type: DataTypes.STRING, allowNull: false },
-    idRole: {type: DataTypes.INTEGER, references: { model: 'roles', key: 'idRole' }},
-    idDepartement: {type: DataTypes.INTEGER, references: { model: 'departements', key: 'idDepartement' }}
-})
+//     idRole: {type: DataTypes.INTEGER, references: { model: 'roles', key: 'idRole' } },
+//     idDepartement: {type: DataTypes.INTEGER, references: { model: 'departements', key: 'idDepartement' }}
+ })
 
 
 export default Utilisateur

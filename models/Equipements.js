@@ -22,7 +22,7 @@ const  Equipements = database.define('Equipements', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    idEmplacement: { type: DataTypes.INTEGER, references: { model: 'Emplacement', key: 'idEmplacement' }}
+    // idEmplacement: { type: DataTypes.INTEGER, references: { model: 'emplacements', key: 'idEmplacement' }}
 },
  { timestamps: false });
 

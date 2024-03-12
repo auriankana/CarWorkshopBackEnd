@@ -33,8 +33,9 @@ export const addRole = async(req,res)=>{
 export const deleteRole = async (req,res) =>{
 
     // Search of the role to delete
-    const {idRole} = req.params
-    
+    const {id:idRole} = req.params
+    //console.log("idRole:",idRole)
+
     if (!parseInt(idRole)) return res.status(404).json({message: "Ce role n'existe pas"})
 
     try {

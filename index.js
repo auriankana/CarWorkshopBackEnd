@@ -7,7 +7,7 @@ import compression from 'compression'
 
 //Pour avoir acces au fichier .env
 import dotenv from 'dotenv'
-const env=dotenv.config().parsed
+const env =dotenv.config().parsed
 
 // console.log('env',env)
 //Creation de l'application
@@ -43,7 +43,8 @@ import {routerReservation} from './routes/ReservationRoute.js'
 //import database from './config/connexion.js';
 
 //synchronisation avec la  base de donnes
-database.sync()
+database.sync({alter:true})//alter:true Accepter les modifications faites sur la bd sans supprimer les informations
+//force:true Accepter les modifications faites sur la bd en supprimant les informations
 
 const notreFunction = (req, res) => {
     res.send('Bonjour')
