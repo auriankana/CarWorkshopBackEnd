@@ -1,8 +1,9 @@
 // Amener le modele du departement avec les relations
 import { Utilisateur } from "../models/relation.js"
 import bcrypt from 'bcrypt'
-//Controllers
 
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
 
 export const utilisateurList = async (req, res) => {
 
@@ -17,7 +18,10 @@ export const utilisateurList = async (req, res) => {
     // Creation d'un utilisateur
    export const addUtilisateur= async (req,res)=>{
         // Les informations du nouvel utilisateur envoyé depuis postman
-
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        res.status(400).json ({ errors: errors.array() });
+        }
 
         // Hachage du mot de passe
         const {idutilisateur, nom, prenom, adresse, email, motDePasse, roleIdRole, departementIdDepartement} = req.body
@@ -40,6 +44,13 @@ export const utilisateurList = async (req, res) => {
 
     // Mise a jour d'un utilisateur
     export const updateUtilisateur= async (req, res)=>{
+        
+        //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    
         // L'information actuelle
         const {id:idUtilisateur}= req.params
 
