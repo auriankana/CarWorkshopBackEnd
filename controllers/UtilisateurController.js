@@ -20,11 +20,11 @@ export const utilisateurList = async (req, res) => {
 
 
         // Hachage du mot de passe
-        const {idutilisateur, nom, prenom, adresse, email, motDePasse, idRole, idDepartement} = req.body
+        const {idutilisateur, nom, prenom, adresse, email, motDePasse, roleIdRole, departementIdDepartement} = req.body
 
          const mdpHash = bcrypt.hashSync(motDePasse,10)
          
-         const utilisateur ={idutilisateur, nom, prenom, adresse, email, motDePasse: mdpHash, idRole, idDepartement}
+         const utilisateur ={idutilisateur, nom, prenom, adresse, email, motDePasse: mdpHash,  roleIdRole, departementIdDepartement}
 
         console.log('new utilisateur',utilisateur) // verification de l'envoi de l'utilisateur
 
@@ -41,11 +41,11 @@ export const utilisateurList = async (req, res) => {
     // Mise a jour d'un utilisateur
     export const updateUtilisateur= async (req, res)=>{
         // L'information actuelle
-        const {id}= req.params
+        const {id:idUtilisateur}= req.params
 
         //Validation de l'id
-        if(! parseInt(id)) return res.status(404).json({message:"Cet utilisateur n'existe pas"})     
-        const utilisateur = await Utilisateur.findByPk(id)
+        if(! parseInt(idUtilisateur)) return res.status(404).json({message:"Cet utilisateur n'existe pas"})     
+        const utilisateur = await Utilisateur.findByPk(idUtilisateur)
         // Nouvelle information 
         const newUtilisateur = req.body
         
@@ -61,15 +61,15 @@ export const utilisateurList = async (req, res) => {
 
     // Suppression d'un utilisateur 
     export const deleteUtilisateur= async (req, res)=>{
-        const {id}= req.params
+        const {id:idUtilisateur}= req.params
 
         //Validattion de l'id
-        if(! parseInt(id)) return res.status(404).json({message:"Cet utilisateur n'existe pas"}) 
+        if(! parseInt(idUtilisateur)) return res.status(404).json({message:"Cet utilisateur n'existe pas"}) 
 
         // try catch
         try {
-            await Utilisateur.destroy({where: {id} })
-            res.status(200).json({message: `Utilisateur ${id} supprime avec success`})
+            await Utilisateur.destroy({where: {idUtilisateur} })
+            res.status(200).json({message: `Utilisateur ${idUtilisateur} supprime avec success`})
         } catch (error) {
             res.status(404).json({message:error.message})
         }

@@ -16,8 +16,14 @@ const Role = database.define('role', {
     titre: { 
         type: DataTypes.ENUM ('manager', 'admin', 'mechanic', 'supplier', 'customer') ,
         defaultValue: 'customer',
-        allowNull: false
-    }
+        allowNull: false,
+        validate: {
+            isIn: {
+                args: [['manager', 'admin', 'mechanic', 'supplier', 'customer']],
+                msg: "Ce rôle n'existe pas"
+            }
+        }
+    }
 })
 
 export default Role
