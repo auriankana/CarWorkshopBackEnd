@@ -49,12 +49,12 @@ export const update_reservation = async (req, res) => {
     }
 
     //L'information actuelle
-    const { id } = req.params
+    const { id:idReservations } = req.params
     
     //console.log('notre id', id)
     //Validation de l'id
-    if (!parseInt(id)) return res.status(404).json({ message: "Cette reservation n'existe pas" })
-    const reservation = await Reservations.findByPk(id)
+    if (!parseInt(idReservations)) return res.status(404).json({ message: "Cette reservation n'existe pas" })
+    const reservation = await Reservations.findByPk(idReservations)
     //Nouvelle information
     const new_reservation = req.body
     try {
@@ -70,10 +70,10 @@ export const update_reservation = async (req, res) => {
 
 //Suppression d'une reservation
 export const remove_reservation = async (req, res) => {
-    const { id } = req.params
+    const { id:idReservations } = req.params
     try {
-        await Reservations.destroy({ where: { id } })
-        res.status(200).json({ message: `Reservation ${id} supprimé avec succes` })
+        await Reservations.destroy({ where: { idReservations } })
+        res.status(200).json({ message: `Reservation ${idReservations} supprimé avec succes` })
     } catch (error) {
         res.status(400).json({ message: error.message })
 

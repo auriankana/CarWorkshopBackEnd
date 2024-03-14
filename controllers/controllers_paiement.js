@@ -46,12 +46,12 @@ export const update_paiement = async (req, res) => {
     }
 
     //L'information actuelle
-    const { id } = req.params
+    const { id:idpaiement } = req.params
     
     //console.log('notre id', id)
     //Validation de l'id
-    if (!parseInt(id)) return res.status(404).json({ message: "Cette paiement n'existe pas" })
-    const paiement = await Paiement.findByPk(id)
+    if (!parseInt(idpaiement)) return res.status(404).json({ message: "Cette paiement n'existe pas" })
+    const paiement = await Paiement.findByPk(idpaiement)
     //Nouvelle information
     const new_paiement = req.body
     try {

@@ -36,9 +36,9 @@ export const updateEmplacement = async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
 
-    const { id } = req.params;
-    if (!parseInt(id)) return res.status(404).json({ message: "Cet emplacement n'existe pas" });
-    const emplacement = await Emplacement.findByPk(id);
+    const { id:idEmplacement } = req.params;
+    if (!parseInt(idEmplacement)) return res.status(404).json({ message: "Cet emplacement n'existe pas" });
+    const emplacement = await Emplacement.findByPk(idEmplacement);
     const newEmplacement = req.body;
     try {
         await emplacement.update(newEmplacement);
@@ -49,10 +49,10 @@ export const updateEmplacement = async (req, res) => {
 }
 //Suppression d'un emplacement
 export const removeEmplacement = async (req, res) => {
-    const { id } = req.params;
+    const { id:idEmplacement } = req.params;
     try {
-        await Emplacement.destroy({ where: { id } });
-        res.status(200).json({ message: `Emplacement ${id} supprimé avec succès` });
+        await Emplacement.destroy({ where: { idEmplacement } });
+        res.status(200).json({ message: `Emplacement ${idEmplacement} supprimé avec succès` });
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

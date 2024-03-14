@@ -46,12 +46,12 @@ export const update_facturation = async (req, res) => {
     }
 
     //L'information actuelle
-    const { id } = req.params
+    const { id:idfacturation } = req.params
     
     //console.log('notre id', id)
     //Validation de l'id
-    if (!parseInt(id)) return res.status(404).json({ message: "Cette facturation n'existe pas" })
-    const facturation = await Facturation.findByPk(id)
+    if (!parseInt(idfacturation)) return res.status(404).json({ message: "Cette facturation n'existe pas" })
+    const facturation = await Facturation.findByPk(idfacturation)
     //Nouvelle information
     const new_facturation = req.body
     try {

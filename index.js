@@ -68,7 +68,7 @@ app.use("/equipements", routerEquipement);
 
 app.use("/reservations", routerReservation);
 
-app.use("factuartion", router_fac)
+app.use("/facturations", router_fac)
 
 app.use("/paiements", router_paie)
 

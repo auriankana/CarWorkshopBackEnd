@@ -7,7 +7,7 @@ import {validationResult } from 'express-validator'
 export const departmentList = async (req, res) => {
 
     //Liste des departements depuis la base de donnees
-    const departments = await Department.findAll()
+    const departments = await Departement.findAll()
 
     res.status(200).json({ data: departments, message:'Tout semble bien marche' })
 
@@ -44,12 +44,12 @@ export const updateDepartment = async (req, res) => {
     }
 
     //L'information actuelle
-    const { id } = req.params
+    const { id:idDepartement } = req.params
     
     //console.log('notre id', id)
     //Validation de l'id
-    if (!parseInt(id)) return res.status(404).json({ message: "Ce departement n'existe pas" })
-    const departement = await Departement.findByPk(id)
+    if (!parseInt(idDepartement)) return res.status(404).json({ message: "Ce departement n'existe pas" })
+    const departement = await Departement.findByPk(idDepartement)
     //Nouvelle information
     const newDepartement = req.body
     try {
@@ -68,10 +68,10 @@ export const updateDepartment = async (req, res) => {
 
 //Suppression d'un department
 export const removeDepartment = async (req, res) => {
-    const { id } = req.params
+    const {id:idDepartement } = req.params
     try {
-        await Departement.destroy({ where: { id } })
-        res.status(200).json({ message: `Departement ${id} supprime avec succes` })
+        await Departement.destroy({ where: { idDepartement } })
+        res.status(200).json({ message: `Departement ${idDepartement} supprime avec succes` })
     } catch (error) {
         res.status(400).json({ message: error.message })
 

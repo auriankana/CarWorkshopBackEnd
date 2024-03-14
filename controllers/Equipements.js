@@ -46,12 +46,12 @@ export const update_equipement = async (req, res) => {
     }
 
     //L'information actuelle
-    const { id } = req.params
+    const { id:idEquipements } = req.params
     
     //console.log('notre id', id)
     //Validation de l'id
-    if (!parseInt(id)) return res.status(404).json({ message: "Cet equipement n'existe pas" })
-    const equipement = await Equipements.findByPk(id)
+    if (!parseInt(idEquipements)) return res.status(404).json({ message: "Cet equipement n'existe pas" })
+    const equipement = await Equipements.findByPk(idEquipements)
     //Nouvelle information
     const new_equipement = req.body
     try {
@@ -67,10 +67,10 @@ export const update_equipement = async (req, res) => {
 
 //Suppression dun equipement
 export const remove_equipement = async (req, res) => {
-    const { id } = req.params
+    const { id:idEquipements } = req.params
     try {
-        await Equipements.destroy({ where: { id } })
-        res.status(200).json({ message: `equipement ${id} supprimé avec succes` })
+        await Equipements.destroy({ where: { idEquipements } })
+        res.status(200).json({ message: `equipement ${idEquipements} supprimé avec succes` })
     } catch (error) {
         res.status(400).json({ message: error.message })
 
