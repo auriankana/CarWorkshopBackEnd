@@ -21,10 +21,10 @@ const Paiement = database.define('Paiement', {
         
     },
 
-    idFacturation: {
-        type: DataTypes.INTEGER,
+    // idFacturation: {
+    //     type: DataTypes.INTEGER,
        
-      },
+    //   },
 
 Date_paiement:{type: DataTypes.STRING,}
 

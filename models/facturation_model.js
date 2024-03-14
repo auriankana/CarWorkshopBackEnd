@@ -19,14 +19,13 @@ const Facturation = database.define('Facturation', {
     description: {
         type: DataTypes.STRING,
         allowNull: false
-    },
+     }
 
-    idUtilisateur: {
-        type: DataTypes.INTEGER,
-       
-      },
+//     idUtilisateur: {
+//         type: DataTypes.INTEGER,
+//       },
 
-idReservation:{type: DataTypes.INTEGER,}
+// idReservation:{type: DataTypes.INTEGER,}
 
 },
 { timestamps: false})
