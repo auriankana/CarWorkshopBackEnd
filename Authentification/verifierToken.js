@@ -17,7 +17,7 @@ export const verifierToken = (req, res, next) => {
         if (err) return res.status(401).json({ message: err.message })
 
         req.idUtilisateur = payload.id
-
+        console.log("voici verif lidetifiant :",payload.id)
         next()
     })
 

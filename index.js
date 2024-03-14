@@ -39,6 +39,8 @@ import {emplacementRouter} from './routes/Emplacement.js'
 import {routerEquipement}from './routes/EquipementRoute.js'
 import {routerReservation} from './routes/ReservationRoute.js'
 import authentificationRoute from './routes/authentificationRoute.js'
+import router_paie from './routes/paiement-route.js'
+import router_fac from './routes/facturation_route.js'
 
 //Creation reelle des tables
 //import database from './config/connexion.js';
@@ -65,6 +67,10 @@ app.use("/emplacements", emplacementRouter);
 app.use("/equipements", routerEquipement);
 
 app.use("/reservations", routerReservation);
+
+app.use("factuartion", router_fac)
+
+app.use("/paiements", router_paie)
 
 app.use('/login', authentificationRoute)
 

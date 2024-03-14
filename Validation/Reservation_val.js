@@ -1,6 +1,6 @@
 import { body, check, param } from "express-validator";
 
-const Resrvation_val = [
+const reservationRules = [
     body('modele').notEmpty().withMessage("Le modele ne peut pas être vide"),
     body('marque').notEmpty().withMessage("La marque ne peut pas être vide"),
     body('electrique').notEmpty().withMessage("Le champ 'électrique' ne peut pas être vide"),
@@ -11,6 +11,6 @@ const Resrvation_val = [
     param('id').optional().isInt({ min: 1 }).withMessage("l'id doit etre un entier positif")
 ]
 
-export default Resrvation_val
+export default reservationRules
 
 

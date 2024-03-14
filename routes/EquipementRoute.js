@@ -3,13 +3,17 @@ import { Router } from "express";
 
 //Import des controllers pour la creation des routes
 import { liste_equipements, add_equipement, update_equipement, remove_equipement } from "../controllers/Equipements.js";
+import { verifierToken } from "../Authentification/verifierToken.js";
+import autoriser from "../Authentification/autorisation.js"
+import equipementRules from "../Validation/Equipement_val.js";
+
 
 export const routerEquipement = Router()
 
 routerEquipement
-.get("/", liste_equipements)
-.post("/", add_equipement)
-.put("/:id", update_equipement)
-.delete("/:id", remove_equipement);
+.get("/",verifierToken, autoriser(['admin','manager','mechanic']), liste_equipements)
+.post("/",verifierToken, autoriser(['admin','manager']), equipementRules, add_equipement)
+.put("/:id",verifierToken, autoriser(['admin','manager']), equipementRules, update_equipement)
+.delete("/:id",verifierToken, autoriser(['admin','manager']), remove_equipement);
 
 

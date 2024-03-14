@@ -1,5 +1,4 @@
 // Amener le modele du etudiant avec les relations
-import { where } from "sequelize";
 import { Role } from "../models/relation.js";
 import { validationResult } from "express-validator";
 //LIste des etudiants

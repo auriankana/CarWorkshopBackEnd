@@ -1,6 +1,8 @@
 // Amener le modele  avec les relations
 import{Paiement} from "../models/relation.js"
 
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
 
 
 // Fonction pour récupérer toutes les facturations
@@ -16,6 +18,12 @@ export const liste_Paiement = async (req, res) => {
 //Creation d'une facturation
 export const add_paiement = async (req, res) => {
 
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //Les informations du nouvel equipement
     const newpaiement = req.body
 
@@ -30,6 +38,13 @@ export const add_paiement = async (req, res) => {
 
 //Mise a jour d'une paiement
 export const update_paiement = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //L'information actuelle
     const { id } = req.params
     
