@@ -1,4 +1,6 @@
-import Emplacement from "../models/emplacement.js";
+import {Emplacement} from '../models/relation.js';
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
 
 export const emplacementList = async (req, res) => {
     try {
@@ -10,6 +12,13 @@ export const emplacementList = async (req, res) => {
 }
 //creation d 'un emplacement
 export const addEmplacement = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const emplacement = req.body;
     try {
         await Emplacement.create(emplacement);
@@ -20,6 +29,13 @@ export const addEmplacement = async (req, res) => {
 }
 //mis a jour d'un emplacement
 export const updateEmplacement = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     const { id } = req.params;
     if (!parseInt(id)) return res.status(404).json({ message: "Cet emplacement n'existe pas" });
     const emplacement = await Emplacement.findByPk(id);

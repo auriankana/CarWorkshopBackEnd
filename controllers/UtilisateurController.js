@@ -41,7 +41,8 @@ export const utilisateurList = async (req, res) => {
         }
     }
 
-
+    
+   
     // Mise a jour d'un utilisateur
     export const updateUtilisateur= async (req, res)=>{
         
@@ -50,7 +51,7 @@ export const utilisateurList = async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    
+
         // L'information actuelle
         const {id:idUtilisateur}= req.params
 
@@ -70,6 +71,7 @@ export const utilisateurList = async (req, res) => {
     }
 
 
+
     // Suppression d'un utilisateur 
     export const deleteUtilisateur= async (req, res)=>{
         const {id:idUtilisateur}= req.params
@@ -85,4 +87,28 @@ export const utilisateurList = async (req, res) => {
             res.status(404).json({message:error.message})
         }
     }
+
+
+
+ // obtenir la liste des utilisateurs avec pagination
+ export const nombrePagesUtilisateurs = async (req, res) => {
+    // Extraire les parametres de pagination de la requete
+    const { page = 1, limit = 10 } = req.query;
+    const offset = (page - 1) * limit;
+
+    try {
+        // Recuperer la liste des auteurs en utilisant les parametres de pagination
+        const utilisateurs = await Utilisateur.findAndCountAll({
+            limit: limit,
+            offset: offset
+        });
+
+        // Envoyer la liste des auteurs en reponse
+        res.status(200).json({ data: utilisateurs.rows, total: utilisateurs.count });
+    } catch (error) {
+        // Gerer les erreurs
+        res.status(500).json({ message: error.message });
+    }
+};
+
 

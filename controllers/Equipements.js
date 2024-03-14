@@ -1,6 +1,8 @@
 // Amener le modele  avec les relations
 import { Equipements } from "../models/relation.js"
 
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
 
 
 // Fonction pour récupérer tous les équipements
@@ -16,6 +18,12 @@ export const liste_equipements = async (req, res) => {
 //Creation d'un equipement
 export const add_equipement = async (req, res) => {
 
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //Les informations du nouvel equipement
     const newequipement = req.body
 
@@ -30,6 +38,13 @@ export const add_equipement = async (req, res) => {
 
 //Mise a jour dun equipement
 export const update_equipement = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //L'information actuelle
     const { id } = req.params
     

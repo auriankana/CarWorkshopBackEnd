@@ -22,8 +22,8 @@ const Role = database.define('role', {
                 args: [['manager', 'admin', 'mechanic', 'supplier', 'customer']],
                 msg: "Ce rôle n'existe pas"
             }
-        }
-    }
+        }
+    }
 })
 
 export default Role

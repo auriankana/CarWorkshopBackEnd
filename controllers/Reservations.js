@@ -1,6 +1,9 @@
 // Amener le modele  avec les relations
 import { Reservations } from "../models/relation.js"
 
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
+
 
 //Controller
 //liste des des reservations
@@ -15,6 +18,12 @@ if (reservation==null){console.log("cest vide")}
 
 //Creation d'une reservation
 export const add_reservation = async (req, res) => {
+
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
 
     //Les informations de la nouvelle reservation
     const newreservation = req.body
@@ -32,6 +41,13 @@ export const add_reservation = async (req, res) => {
 
 //Mise a jour d'une reservation
 export const update_reservation = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //L'information actuelle
     const { id } = req.params
     

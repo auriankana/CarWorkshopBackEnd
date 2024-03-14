@@ -1,5 +1,7 @@
 // Amener le modele du departement avec les relations
 import { Departement } from "../models/relation.js"
+//Importer le module suivant dans le controller
+import {validationResult } from 'express-validator'
 
 //Controller
 export const departmentList = async (req, res) => {
@@ -13,6 +15,13 @@ export const departmentList = async (req, res) => {
 
 //Creation d'un departement
 export const addDepartment = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //Les informations du nouveau departement
     const department = req.body
     // const { nom, description, creation_date } = req.body
@@ -27,6 +36,13 @@ export const addDepartment = async (req, res) => {
 
 //Mise a jour d'un departement
 export const updateDepartment = async (req, res) => {
+    
+    //Recuperation des resultats de la validation 
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+
     //L'information actuelle
     const { id } = req.params
     
